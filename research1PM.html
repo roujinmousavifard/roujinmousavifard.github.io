@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Predictive Maintenance System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+
+    <div id="navbar"></div>
+
+    <!-- Project Content -->
+
+    <section class="project">
+      <div class="carousel">
+        <div class="carousel-images">
+          <img
+            src="https://drive.google.com/thumbnail?id=1x3jBHFcAqjl_7UuYaTSyb1yupw9Sb8xK&sz=w1000"
+            alt="PM"
+            class="carousel-item"
+          />
+          <img
+            src="https://drive.google.com/thumbnail?id=1sTQtCudr7fRWsaTEJvCggCCbuCtbedIv&sz=w1000"
+            alt="PM"
+            class="carousel-item"
+          />
+          <img
+            src="https://drive.google.com/thumbnail?id=1aFrbbWu7VIG1MH-__sAQAEyMrfg07TsW&sz=w1000"
+            alt="PM"
+            class="carousel-item"
+          />
+        </div>
+        <button class="carousel-control prev" onclick="moveCarousel(-1)">
+          &#10094;
+        </button>
+        <button class="carousel-control next" onclick="moveCarousel(1)">
+          &#10095;
+        </button>
+      </div>
+      <!-- <img src="project1.jpg" alt="Predictive Maintenance System" /> -->
+      <div class="project-description">
+        <h2>Predictive Maintenance System</h2>
+
+        <p>
+          The Predictive Maintenance System revolutionizes industrial machinery
+          upkeep by predicting how long a machine can operate before maintenance
+          is required and identifying specific components likely to fail,
+          enabling targeted and efficient repairs. This capability reduces the
+          need for frequent on-site visits, particularly in remote or
+          hard-to-reach locations, where regular human inspections are
+          challenging. By preventing unexpected downtime and enabling
+          cost-effective maintenance, the system delivers a significant leap in
+          Industry 4.0 maintenance technologies.
+        </p>
+
+        <p>
+          The custom-designed hardware supports multiple connectivity options,
+          including 4G, LoRaWAN, BLE 5.0, and WiFi, ensuring seamless data
+          transmission in even the most demanding industrial settings. It
+          collects real-time vibration and performance data, which can be
+          accessed via an intuitive online application for remote monitoring and
+          analysis.
+        </p>
+
+        <p>
+          Available in two models—one powered by a built-in battery for
+          portability and flexibility, and another connected to wired
+          electricity for continuous operation—the system ensures adaptability
+          to diverse operational environments.
+        </p>
+
+        <p>
+          Additionally, the system incorporates Augmented Reality (AR), offering
+          a visual overlay of machinery components to highlight critical areas
+          and provide actionable insights. This comprehensive solution combines
+          advanced hardware and analytics, empowering industries to streamline
+          their maintenance processes, minimize downtime, and optimize overall
+          operational efficiency.
+        </p>
+      </div>
+    </section>
+
+    <section class="video-demo">
+      <h2>Software Demonstration</h2>
+      <div class="video-wrapper">
+        <iframe
+          class="video-frame"
+          src="https://drive.google.com/file/d/1GxnQ2YyqMW88d-r6tIPs_GPGfkDGKqjy/preview"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          width="100%"
+          height="500"
+        >
+        </iframe>
+      </div>
+    </section>
+    <section class="ar-video-demo">
+      <h2>Augmented Reality Demonstration</h2>
+      <div class="video-wrapper">
+        <iframe
+          class="video-frame"
+          src="https://drive.google.com/file/d/1j8Wr_djzlXfbgEP5Nie7U2LG7FyWtjVE/preview"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          width="100%"
+          height="400"
+        >
+        </iframe>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2024 Roujin Mousavifard. All rights reserved.</p>
+    </footer>
+    <script>
+      // Load the navbar.html content into the #navbar div
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading navbar:", error));
+      let currentSlide = 0;
+      let autoSlideInterval;
+
+      // Function to move the carousel in a given direction
+      function moveCarousel(direction) {
+        const carouselImages = document.querySelector(".carousel-images");
+        const totalSlides = document.querySelectorAll(".carousel-item").length;
+        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+        carouselImages.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Reset the auto-slide interval when user interacts
+        resetAutoSlide();
+      }
+
+      // Function to reset the auto-slide interval
+      function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(() => {
+          moveCarousel(1);
+        }, 5000); // Change every 5 seconds
+      }
+
+      // Initialize the carousel and set the interval
+      document.addEventListener("DOMContentLoaded", () => {
+        autoSlideInterval = setInterval(() => {
+          moveCarousel(1);
+        }, 5000); // Change every 5 seconds
+      });
+
+      // Adjust all iframe heights dynamically based on their width
+      function adjustIframeHeights() {
+        const iframes = document.querySelectorAll(".video-frame");
+        iframes.forEach((iframe) => {
+          iframe.style.height = (iframe.offsetWidth * 9) / 16 + "px"; // Maintain 16:9 aspect ratio
+        });
+      }
+
+      // Adjust heights on load and window resize
+      window.addEventListener("load", adjustIframeHeights);
+      window.addEventListener("resize", adjustIframeHeights);
+    </script>
+  </body>
+</html>

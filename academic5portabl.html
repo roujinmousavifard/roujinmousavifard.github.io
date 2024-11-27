@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portable Vibration Simulation System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+
+    <div id="navbar"></div>
+
+    <!-- Project Content -->
+
+    <section class="project">
+      <div class="carousel">
+        <div class="carousel-images">
+          <img
+            src="https://drive.google.com/thumbnail?id=1tRsBvDNojslbHJzTgIOgT79SHkSOW_Xu&sz=w1000"
+            alt="pelcatic"
+            class="carousel-item"
+          />
+          <img
+            src="https://drive.google.com/thumbnail?id=1RhFZFRijbk-0uIzSad-8ohQU_XeqpZPo&sz=w1000"
+            alt="pelcatic"
+            class="carousel-item"
+          />
+          <img
+            src="https://drive.google.com/thumbnail?id=18DtvdsnRjqwY-0Hp061zFocQAKalH9N0&sz=w1000"
+            alt="pelcatic"
+            class="carousel-item"
+          />
+        </div>
+        <button class="carousel-control prev" onclick="moveCarousel(-1)">
+          &#10094;
+        </button>
+        <button class="carousel-control next" onclick="moveCarousel(1)">
+          &#10095;
+        </button>
+      </div>
+      <!-- <img src="project1.jpg" alt="Predictive Maintenance System" /> -->
+      <div class="project-description">
+        <h2>Portable Vibration Simulation System</h2>
+
+        <p>
+          Design and Development of a Portable Vibration Simulation System A
+          compact and versatile vibration simulation system capable of
+          generating vibrations in the range of 5 Hz to 20 kHz. The system is
+          designed to handle up to a 2 kg mass, ensuring robust and reliable
+          performance across a variety of testing scenarios. An integrated
+          software interface was developed to visualize the generated waveforms
+          in real time, providing users with enhanced control and monitoring
+          capabilities for precise experimentation and analysis.
+        </p>
+      </div>
+    </section>
+
+    <section class="video-demo">
+      <h2>Application Demonstration</h2>
+      <div class="video-wrapper">
+        <iframe
+          class="video-frame"
+          src="https://drive.google.com/file/d/1Ktts0sh8AWuf6KJox4FVYfPda4chUGy8/preview"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          width="100%"
+          height="400"
+        >
+        </iframe>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2024 Roujin Mousavifard. All rights reserved.</p>
+    </footer>
+    <script>
+      // Load the navbar.html content into the #navbar div
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading navbar:", error));
+      let currentSlide = 0;
+      let autoSlideInterval;
+
+      // Function to move the carousel in a given direction
+      function moveCarousel(direction) {
+        const carouselImages = document.querySelector(".carousel-images");
+        const totalSlides = document.querySelectorAll(".carousel-item").length;
+        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+        carouselImages.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Reset the auto-slide interval when user interacts
+        resetAutoSlide();
+      }
+
+      // Function to reset the auto-slide interval
+      function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(() => {
+          moveCarousel(1);
+        }, 5000); // Change every 5 seconds
+      }
+
+      // Initialize the carousel and set the interval
+      document.addEventListener("DOMContentLoaded", () => {
+        autoSlideInterval = setInterval(() => {
+          moveCarousel(1);
+        }, 5000); // Change every 5 seconds
+      });
+      // Adjust all iframe heights dynamically based on their width
+      function adjustIframeHeights() {
+        const iframes = document.querySelectorAll(".video-frame");
+        iframes.forEach((iframe) => {
+          iframe.style.height = (iframe.offsetWidth * 9) / 16 + "px"; // Maintain 16:9 aspect ratio
+        });
+      }
+
+      // Adjust heights on load and window resize
+      window.addEventListener("load", adjustIframeHeights);
+      window.addEventListener("resize", adjustIframeHeights);
+    </script>
+  </body>
+</html>

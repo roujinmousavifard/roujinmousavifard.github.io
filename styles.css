@@ -1,0 +1,496 @@
+/* General body styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: #333;
+}
+header {
+  background: #477998; /* Primary theme color */
+  color: #eec584; /* Accent color */
+  text-align: center; /* Center-align text */
+  padding: 2rem 0; /* Add spacing around the text */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center-align content horizontally */
+  justify-content: center; /* Center-align content vertically */
+  height: 200px; /* Optional: Set height for consistent spacing */
+}
+
+header h1 {
+  font-size: 2.5rem; /* Larger font size for name */
+  margin: 0; /* Remove default margin */
+}
+
+header p {
+  font-size: 1.2rem; /* Slightly smaller font for job title */
+  margin: 0; /* Remove default margin */
+}
+
+/* Navbar styling */
+nav {
+  display: flex;
+  justify-content: center;
+  background: #477998; /* Primary theme color */
+  padding: 0.5rem;
+  position: relative; /* Needed for dropdown positioning */
+}
+
+nav a {
+  color: #eec584; /* Accent color */
+  text-decoration: none;
+  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  display: inline-block;
+  transition: background 0.3s, color 0.3s; /* Smooth hover transition */
+}
+
+nav a:hover,
+.dropdown:hover > a {
+  background: #eec584; /* Hover background */
+  color: #477998; /* Hover text color */
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Dropdown menu styling */
+.dropdown {
+  position: relative; /* Set relative to parent for dropdown alignment */
+}
+
+.dropdown-content {
+  display: none; /* Hidden by default */
+  position: absolute; /* Positioned relative to the .dropdown */
+  background-color: #eec584; /* Dropdown background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  z-index: 1;
+  padding: 1rem;
+  border-radius: 10px; /* Rounded corners */
+  width: 600px; /* Wider dropdown for better spacing */
+  top: 100%; /* Position directly below the parent menu item */
+  left: 0;
+  display: flex; /* Display dropdown content as flexbox */
+  gap: 2rem; /* Space between columns */
+  opacity: 0; /* Hidden initially */
+  visibility: hidden; /* Ensures it's not clickable when hidden */
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+  display: flex; /* Ensure it's displayed as flexbox */
+  opacity: 1; /* Fade-in effect */
+  visibility: visible; /* Now clickable */
+}
+
+/* Dropdown column styling */
+.dropdown-column {
+  flex: 1; /* Each column takes equal space */
+}
+
+.dropdown-column h4 {
+  margin-bottom: 1rem;
+  color: #477998; /* Heading color */
+  font-size: 1.1rem;
+  border-bottom: 2px solid #477998; /* Underline heading for clarity */
+  padding-bottom: 0.5rem;
+}
+
+.dropdown-content a {
+  color: #477998; /* Text color */
+  text-decoration: none;
+  display: block;
+  padding: 0.5rem 0;
+  font-size: 1rem; /* Slightly larger text */
+  line-height: 1.5; /* Better spacing between lines */
+  transition: background 0.3s, color 0.3s; /* Smooth hover transition */
+}
+
+.dropdown-content a:hover {
+  background: #477998; /* Hover background */
+  color: #eec584; /* Hover text color */
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Section styling */
+section {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Bio section styling */
+#bio .bio-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+#bio img {
+  max-width: 200px;
+  height: auto;
+  border-radius: 10px;
+}
+#bio p {
+  text-align: justify; /* Fully justify the text */
+  line-height: 1.6; /* Improve readability */
+  font-size: 1.1rem; /* Slightly larger font size for better appearance */
+  color: #333; /* Text color */
+  margin: 0; /* Remove unnecessary margins */
+}
+
+/* Research Interests Section */
+.research-interests-container {
+  display: flex; /* Use flexbox to create columns */
+  justify-content: center; /* Center the columns in the container */
+  gap: 3rem; /* Space between the two columns */
+}
+
+.research-interests-container ul {
+  list-style-type: disc; /* Standard bullet points */
+  padding: 0;
+  margin: 0;
+}
+
+.research-interests-container li {
+  margin: 0.5rem 0; /* Space between list items */
+  line-height: 1.6; /* Improve readability */
+  font-size: 1.1rem; /* Slightly larger font for clarity */
+  color: #333; /* Text color */
+}
+#research {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+/* Styling for the download button */
+.download-button {
+  display: inline-block; /* Makes the link behave like a button */
+  text-decoration: none; /* Remove underline */
+  background-color: #477998; /* Button background color */
+  color: #eec584; /* Text color */
+  padding: 0.75rem 1.5rem; /* Add padding for button look */
+  font-size: 1.2rem; /* Larger font size for emphasis */
+  font-weight: bold; /* Bold text */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: background-color 0.3s, color 0.3s, transform 0.2s; /* Smooth transitions */
+}
+
+.download-button:hover {
+  background-color: #eec584; /* Hover background color */
+  color: #477998; /* Hover text color */
+  transform: translateY(-3px); /* Slight lift on hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+  cursor: pointer; /* Pointer cursor to indicate interactivity */
+}
+
+/* Make the entire research item clickable */
+.research-link {
+  text-decoration: none; /* Remove underline from the main clickable link */
+  color: inherit; /* Inherit text color */
+  display: block; /* Make the anchor behave as a block-level element */
+  margin-bottom: 1.5rem; /* Space between projects */
+}
+
+/* Individual research item styling */
+.research-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  background: #eec584; /* Background color */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.research-item:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  cursor: pointer; /* Pointer cursor indicates clickability */
+}
+
+/* Styling for research item description */
+.research-description h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #477998; /* Project title color */
+}
+
+.research-description p {
+  margin: 0.5rem 0;
+  color: #333; /* Description text color */
+}
+
+/* Styling for "Read More" button */
+.read-more {
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Make it look like a button */
+  padding: 0.5rem 1rem;
+  background-color: #477998; /* Button background color */
+  color: #eec584; /* Button text color */
+  border-radius: 5px; /* Rounded button corners */
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 1rem; /* Add space above the button */
+  transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+}
+
+.read-more:hover {
+  background-color: #eec584; /* Hover background color */
+  color: #477998; /* Hover text color */
+  cursor: pointer; /* Pointer cursor for button */
+}
+
+/* Research Section Styling */
+.research-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  background: #eec584; /* Background color for project items */
+  border-radius: 8px; /* Rounded corners for a softer look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  transition: box-shadow 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+.research-item:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+.research-item img {
+  max-width: 150px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.research-description {
+  flex: 1; /* Allow text to take remaining space */
+}
+
+.research-description h4 {
+  margin: 0;
+}
+
+.research-description p {
+  margin: 0.5rem 0;
+}
+
+.research-description a {
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Makes the link behave like a button */
+  padding: 0.5rem 1rem; /* Add padding for button-like appearance */
+  background-color: #477998; /* Button background color */
+  color: #eec584; /* Button text color */
+  border-radius: 5px; /* Rounded corners for the button */
+  font-size: 1rem; /* Adjust font size */
+  font-weight: bold; /* Make the text bold */
+  text-align: center; /* Center the text */
+  transition: background-color 0.3s, color 0.3s; /* Smooth hover transition */
+}
+
+.research-description a:hover {
+  background-color: #eec584; /* Hover background color */
+  color: #477998; /* Hover text color */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+#publications ul {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0;
+  margin: 0;
+}
+
+#publications li {
+  margin-bottom: 1.5rem; /* Add space between items */
+  line-height: 1.6; /* Improve readability */
+}
+
+#publications a {
+  text-decoration: none; /* Remove underline from links */
+  color: #477998; /* Use inherited text color */
+}
+
+#publications a:hover {
+  cursor: pointer; /* Change cursor to pointer on hover */
+  color: #3895ce; /* Optional: Change color on hover for emphasis */
+}
+
+/* Footer styling */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #477998; /* Primary theme color */
+  color: #eec584; /* Accent color */
+}
+
+/* CSS of research porjects*/
+.project {
+  max-width: 900px;
+  margin: 2rem auto; /* Center the content horizontally */
+  padding: 1rem;
+  text-align: center; /* Center the image and title */
+}
+
+.project img {
+  max-width: 100%; /* Make the image responsive */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Optional: Rounded corners for the image */
+  margin: 0 auto 1.5rem; /* Center the image and add space below it */
+  display: block; /* Ensures the image centers properly */
+}
+
+.project-description {
+  text-align: left; /* Align description text to the left */
+  margin-top: 1rem;
+  line-height: 1.6; /* Improve readability */
+}
+
+.project-description h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #477998; /* Title color */
+}
+
+.project-description p {
+  font-size: 1.1rem;
+  color: #333; /* Paragraph text color */
+  margin-bottom: 1rem;
+}
+/* General styling for video demonstration sections */
+.video-demo,
+.ar-video-demo {
+  text-align: center; /* Center-align the content */
+  margin: 0.5rem auto;
+  max-width: 900px; /* Limit the width for large screens */
+}
+
+.video-demo h2,
+.ar-video-demo h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #477998; /* Title color */
+}
+
+.video-demo video,
+.ar-video-demo video {
+  width: 100%; /* Make the video occupy the full width of the container */
+  max-width: 800px; /* Limit the maximum width of the video */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 500px;
+  border-radius: 8px; /* Optional: Rounded corners */
+  margin-bottom: 1rem; /* Space below the video */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 0px;
+  overflow: hidden;
+  border-radius: 10px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+}
+
+/* Carousel Images */
+.carousel-images {
+  display: flex;
+  align-items: center;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  min-width: 100%;
+  height: auto;
+  margin-bottom: 0;
+}
+
+/* Carousel Controls */
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2em;
+  color: rgb(27, 170, 210);
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  /* padding: 5px 5px; */
+  cursor: pointer;
+  border-radius: 100%;
+  z-index: 1;
+  user-select: none;
+}
+
+.carousel-control.prev {
+  left: 10px;
+}
+
+.carousel-control.next {
+  right: 10px;
+}
+
+.carousel-control:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.iframe-section {
+  margin: 2rem auto;
+  max-width: 900px; /* Limit the width for larger screens */
+  text-align: center; /* Center-align the content */
+}
+
+.iframe-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #477998; /* Title color */
+}
+.iframe-section p {
+  text-align: justify; /* Justify the text for better readability */
+  font-size: 1rem; /* Adjust font size for clarity */
+  line-height: 1.6; /* Improve readability with proper line height */
+  color: #333; /* Text color */
+  margin-bottom: 1.5rem; /* Add spacing between the paragraph and iframe */
+}
+
+.iframe-section iframe {
+  width: 100%; /* Responsive iframe */
+  height: 600px; /* Set appropriate height for PDF display */
+  border-radius: 8px; /* Optional: Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  background-color: #f5f5f5; /* Background color behind the PDF */
+}
+
+.rotated-photo {
+  display: block;
+  margin: 0 auto;
+  width: 200px; /* Adjust the size of the image */
+  height: auto; /* Maintain aspect ratio */
+  /* transform-origin: center center; */
+  transform: rotate(-22deg) scale(0.9); /* Rotate the photo by 40 degrees */
+  transition: transform 0.3s ease-in-out; /* Smooth transition for interactivity */
+}
+
+.video-wrapper {
+  max-width: 800px; /* Optional: Limit the maximum width of videos */
+  width: 100%;
+  margin: 20px auto; /* Space between videos */
+}
+
+iframe {
+  border-radius: 8px;
+  width: 100%;
+  border: none; /* Optional: Remove border around iframes */
+}
+
+#contact a {
+    color: #477998; /* Accent color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make the text bold */
+}
+#contact a:hover {
+  text-decoration: underline; /* Underline on hover */
+}

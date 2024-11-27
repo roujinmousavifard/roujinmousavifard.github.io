@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>master</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+
+    <div id="navbar"></div>
+
+    <!-- Project Content -->
+
+    <section class="project">
+      <!-- <div class="carousel">
+        <div class="carousel-images">
+          <img src="pelcatic.png" alt="pelcatic" class="carousel-item" />
+          <img src="pelcaticBoard.png" alt="pelcatic" class="carousel-item" />
+          <img
+            src="pelcaticHealthband.png"
+            alt="pelcatic"
+            class="carousel-item"
+          />
+        </div>
+        <button class="carousel-control prev" onclick="moveCarousel(-1)">
+          &#10094;
+        </button>
+        <button class="carousel-control next" onclick="moveCarousel(1)">
+          &#10095;
+        </button>
+      </div> -->
+      <!-- <img src="project1.jpg" alt="Predictive Maintenance System" /> -->
+      <div class="project-description">
+        <h2>
+          Robot Trajectory Tracking using Combined Stochastic Model-Free
+          Position and DDPG-based Attitude Control
+        </h2>
+
+        <p>
+          This article presents a cascade controller for the quadrotor to track
+          the desired trajectory effectively. Unlike previous approaches, this
+          method avoids simplification and linearization assumptions, making it
+          applicable in a wider range of scenarios. A novel linear quadratic
+          tracking method is utilized, which takes into account both process
+          noise and measurement noise while maintaining a model-free nature.
+          Furthermore, the stability analysis of this stochastic method is
+          thoroughly investigated.
+        </p>
+        <p>
+          In terms of attitude control, a model-free approach is adopted. The
+          Deep Deterministic Policy Gradient (DDPG) algorithm is implemented,
+          leveraging an actor-critic network to handle the nonlinearities
+          associated with attitude control. This model-free approach eliminates
+          the need for an accurate model of the quadrotor's dynamics.
+        </p>
+        <p>
+          Simulations, including hardware-in-the-loop experiments, are conducted
+          to evaluate the performance of the proposed controller, demonstrating
+          its ability to effectively control the quadrotor, ensuring accurate
+          trajectory tracking and stability. Additionally, the formation control
+          of multiple quadrotors is investigated, highlighting the method's
+          versatility in complex multi-agent scenarios.
+        </p>
+      </div>
+    </section>
+
+    <section class="video-demo">
+      <h2>Master's Presentation</h2>
+      <div class="video-wrapper">
+        <iframe
+          class="video-frame"
+          src="https://drive.google.com/file/d/1zsFmpAg2JuqPXamyyfUnJjZsrXd22dCg/preview"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          width="100%"
+          height="400"
+        >
+        </iframe>
+      </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2024 Roujin Mousavifard. All rights reserved.</p>
+    </footer>
+    <script>
+      // Load the navbar.html content into the #navbar div
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading navbar:", error));
+      let currentSlide = 0;
+      let autoSlideInterval;
+
+      // Function to move the carousel in a given direction
+      function moveCarousel(direction) {
+        const carouselImages = document.querySelector(".carousel-images");
+        const totalSlides = document.querySelectorAll(".carousel-item").length;
+        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+        carouselImages.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Reset the auto-slide interval when user interacts
+        resetAutoSlide();
+      }
+
+      // Function to reset the auto-slide interval
+      function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(() => {
+          moveCarousel(1);
+        }, 5000); // Change every 5 seconds
+      }
+
+      // Initialize the carousel and set the interval
+      document.addEventListener("DOMContentLoaded", () => {
+        autoSlideInterval = setInterval(() => {
+          moveCarousel(1);
+        }, 5000); // Change every 5 seconds
+      });
+
+      // Adjust all iframe heights dynamically based on their width
+      function adjustIframeHeights() {
+        const iframes = document.querySelectorAll(".video-frame");
+        iframes.forEach((iframe) => {
+          iframe.style.height = (iframe.offsetWidth * 9) / 16 + "px"; // Maintain 16:9 aspect ratio
+        });
+      }
+
+      // Adjust heights on load and window resize
+      window.addEventListener("load", adjustIframeHeights);
+      window.addEventListener("resize", adjustIframeHeights);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arm Robot</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+
+    <div id="navbar"></div>
+
+    <!-- Project Content -->
+
+    <section class="project">
+      <div class="carousel">
+        <div class="carousel-images">
+          <img
+            src="https://drive.google.com/thumbnail?id=1KT3tZLm5X7JmlCTqWTm__n-1-8pEoFAh&sz=w1000"
+            alt="arm"
+            class="carousel-item"
+          />
+        </div>
+        <button class="carousel-control prev" onclick="moveCarousel(-1)">
+          &#10094;
+        </button>
+        <button class="carousel-control next" onclick="moveCarousel(1)">
+          &#10095;
+        </button>
+      </div>
+      <!-- <img src="project1.jpg" alt="Predictive Maintenance System" /> -->
+      <div class="project-description">
+        <h2>Design, Fabrication, and Control of Robotic Systems</h2>
+
+        <p>
+          This project showcased the design, fabrication, and control of
+          multiple robotic systems, each tailored for distinct industrial and
+          automation applications. The endeavor was divided into three main
+          phases:
+        </p>
+        <p>
+          <strong>Color Detection and Sorting with a Robotic Arm:</strong> A
+          3-degree-of-freedom robotic arm was designed and built, equipped with
+          a gripper for object manipulation. The system integrated sensors and
+          algorithms to identify objects based on their color. Once detected,
+          the robotic arm sorted the products and placed them in designated
+          locations, ensuring high precision and efficiency. This application is
+          particularly suited for assembly lines and sorting tasks in
+          manufacturing industries.
+        </p>
+        <p>
+          <strong>Dynamic Tracking Robotic Arm:</strong> The second phase
+          involved the development of a more advanced robotic arm capable of
+          tracking and following a specific item in real time. Using a camera
+          and image processing algorithms, the robotic arm dynamically adjusted
+          its movements to maintain alignment with the target. This
+          functionality is ideal for applications such as object inspection,
+          quality assurance, and interactive robotics in dynamic environments.
+        </p>
+        <p>
+          <strong>Line-Tracking Mobile Robot:</strong> The final phase focused
+          on designing and programming a robot capable of moving in a straight
+          line. This system was developed to demonstrate a path-planning method.
+          Such a feature is essential for applications like material
+          transportation in warehouses or predefined path navigation in
+          industrial settings.
+        </p>
+      </div>
+    </section>
+
+    <section class="video-demo">
+      <h2>Line-Tracking Mobile Robot</h2>
+      <iframe
+        class="video-frame"
+        src="https://drive.google.com/file/d/1xpK2HolxQSojpiByGNnVHJgLv4W3gLjw/preview"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        width="100%"
+        height="400"
+      >
+      </iframe>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2024 Roujin Mousavifard. All rights reserved.</p>
+    </footer>
+    <script>
+      // Load the navbar.html content into the #navbar div
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading navbar:", error));
+      let currentSlide = 0;
+      let autoSlideInterval;
+
+      // Function to move the carousel in a given direction
+      function moveCarousel(direction) {
+        const carouselImages = document.querySelector(".carousel-images");
+        const totalSlides = document.querySelectorAll(".carousel-item").length;
+        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+        carouselImages.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Reset the auto-slide interval when user interacts
+        resetAutoSlide();
+      }
+
+      // Function to reset the auto-slide interval
+      function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(() => {
+          moveCarousel(1);
+        }, 5000); // Change every 5 seconds
+      }
+
+      // Initialize the carousel and set the interval
+      document.addEventListener("DOMContentLoaded", () => {
+        autoSlideInterval = setInterval(() => {
+          moveCarousel(1);
+        }, 5000); // Change every 5 seconds
+      });
+
+      // Adjust all iframe heights dynamically based on their width
+      function adjustIframeHeights() {
+        const iframes = document.querySelectorAll(".video-frame");
+        iframes.forEach((iframe) => {
+          iframe.style.height = (iframe.offsetWidth * 9) / 16 + "px"; // Maintain 16:9 aspect ratio
+        });
+      }
+
+      // Adjust heights on load and window resize
+      window.addEventListener("load", adjustIframeHeights);
+      window.addEventListener("resize", adjustIframeHeights);
+    </script>
+  </body>
+</html>

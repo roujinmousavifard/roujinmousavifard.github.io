@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safety Device</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+
+    <div id="navbar"></div>
+
+    <!-- Project Content -->
+
+    <section class="project">
+      <div class="carousel">
+        <div class="carousel-images">
+          <img
+            src="https://drive.google.com/thumbnail?id=1x9fZ0GPaGsiDI76bF2ZKyJ6KRHi2iZlQ&sz=w1000"
+            alt="food"
+            class="carousel-item"
+          />
+          <img
+            src="https://drive.google.com/thumbnail?id=1nec1uVpZZTOS8FjOnKIpTVqoML5bMSMw&sz=w1000"
+            alt="safety"
+            class="carousel-item"
+          />
+        </div>
+        <button class="carousel-control prev" onclick="moveCarousel(-1)">
+          &#10094;
+        </button>
+        <button class="carousel-control next" onclick="moveCarousel(1)">
+          &#10095;
+        </button>
+      </div>
+      <!-- <img src="project1.jpg" alt="Predictive Maintenance System" /> -->
+      <div class="project-description">
+        <h2>Innovative Safety Device for the Food Industry</h2>
+
+        <p>
+          We developed an innovative safety device tailored for the food
+          industry, designed to protect operators working in high-risk
+          environments, specifically in gum production lines. The system
+          addresses the critical safety challenge of operators manually feeding
+          raw materials into a grinder, where proximity to the blade poses a
+          severe hazard.
+        </p>
+        <p>The device comprises two interconnected components:</p>
+        <ul>
+          <li>
+            <strong>Smart Bracelet:</strong> Worn by the operator, this bracelet
+            continuously monitors the distance between the operator's hand and
+            the grinder blade.
+          </li>
+          <li>
+            <strong>Grinder Safety Module:</strong> Integrated into the grinder,
+            this module communicates with the bracelet to ensure real-time
+            safety measures.
+          </li>
+        </ul>
+        <p>
+          If the operator's hand comes too close to the blade, the system
+          immediately shuts down the grinder, preventing potential accidents and
+          ensuring a safe working environment. This innovative solution combines
+          precise proximity sensing with rapid response capabilities, offering
+          unparalleled protection for operators while maintaining workflow
+          efficiency.
+        </p>
+        <p>
+          By prioritizing safety without compromising productivity, this device
+          exemplifies how technology can address critical challenges in the food
+          industry, setting a new standard for workplace safety in hazardous
+          environments.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2024 Roujin Mousavifard. All rights reserved.</p>
+    </footer>
+    <script>
+      // Load the navbar.html content into the #navbar div
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading navbar:", error));
+      let currentSlide = 0;
+      let autoSlideInterval;
+
+      // Function to move the carousel in a given direction
+      function moveCarousel(direction) {
+        const carouselImages = document.querySelector(".carousel-images");
+        const totalSlides = document.querySelectorAll(".carousel-item").length;
+        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+        carouselImages.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Reset the auto-slide interval when user interacts
+        resetAutoSlide();
+      }
+
+      // Function to reset the auto-slide interval
+      function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(() => {
+          moveCarousel(1);
+        }, 5000); // Change every 5 seconds
+      }
+
+      // Initialize the carousel and set the interval
+      document.addEventListener("DOMContentLoaded", () => {
+        autoSlideInterval = setInterval(() => {
+          moveCarousel(1);
+        }, 5000); // Change every 5 seconds
+      });
+    </script>
+  </body>
+</html>

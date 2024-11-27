@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RFID Reader with Tracking Module</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+
+    <div id="navbar"></div>
+
+    <!-- Project Content -->
+
+    <section class="project">
+      <div class="carousel">
+        <div class="carousel-images">
+          <img src="https://drive.google.com/thumbnail?id=17d0sqUSopZpWcdZTn9nRtYKKX19qChJy&sz=w1000" alt="reader" class="rotated-photo carousel-item" />
+          <img src="https://drive.google.com/thumbnail?id=17tFiVI-pJa8LQxJ0Ia02ylkajgfDbmTQ&sz=w1000" alt="reader" class="carousel-item" />
+        </div>
+        <button class="carousel-control prev" onclick="moveCarousel(-1)">
+          &#10094;
+        </button>
+        <button class="carousel-control next" onclick="moveCarousel(1)">
+          &#10095;
+        </button>
+      </div>
+      <!-- <img src="project1.jpg" alt="Predictive Maintenance System" /> -->
+      <div class="project-description">
+        <h2>RFID Reader with Tracking Module</h2>
+
+        <p>
+          Our Livestock Management System is a cutting-edge solution designed to
+          transform livestock tracking and management. At its core are our
+          advanced RFID readers and smart tags, enabling seamless identification
+          and monitoring of animals across various critical parameters.
+        </p>
+        <p>
+          Our system integrates state-of-the-art passive and active RFID tags,
+          available in underskin or bolus formats. These innovative tags monitor
+          a wide range of vital data, including ID, temperature, pH levels,
+          location, and estrus cycles, ensuring comprehensive health and
+          performance tracking. The RFID readers provide reliable data
+          transmission, enabling real-time monitoring and precise management.
+        </p>
+        <p>
+          The RFID reader device is equipped with a GPS module, allowing it to
+          record the location of livestock and display it in the app alongside
+          each animal’s profile. This feature ensures complete visibility into
+          the whereabouts and status of every animal, streamlining operations
+          and enhancing decision-making for livestock managers.
+        </p>
+      </div>
+    </section>
+
+    <section class="video-demo">
+      <h2>Product Demonstration</h2>
+      <div class="video-wrapper">
+        <iframe
+          class="video-frame"
+          src="https://drive.google.com/file/d/1mOtrmFFr_DKprfXVmT4otyIDNPh2StMB/preview"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          width="100%"
+          height="400"
+        >
+        </iframe>
+      </div>
+      <div class="video-wrapper">
+        <iframe
+          class="video-frame"
+          src="https://drive.google.com/file/d/1yTXlU4da_1XBi2mHS1Ww71-ZFH20XwVz/preview"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          width="100%"
+          height="400"
+        >
+        </iframe>
+      </div>
+    </section>
+
+    <section class="video-demo">
+      <h2>Application Demonstration</h2>
+      <div class="video-wrapper">
+        <iframe
+          class="video-frame"
+          src="https://drive.google.com/file/d/1w7bi7NzXXQqJ6XJdXzhLQWPIlLmxFVK5/preview"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          width="100%"
+          height="400"
+        >
+        </iframe>
+      </div>
+      <div class="video-wrapper">
+        <iframe
+          class="video-frame"
+          src="https://drive.google.com/file/d/1qfcSJ4fwxKTkHOhIVllSu_pweh6wd2Nh/preview"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          width="100%"
+          height="400"
+        >
+        </iframe>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2024 Roujin Mousavifard. All rights reserved.</p>
+    </footer>
+    <script>
+      // Load the navbar.html content into the #navbar div
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading navbar:", error));
+      let currentSlide = 0;
+      let autoSlideInterval;
+
+      // Function to move the carousel in a given direction
+      function moveCarousel(direction) {
+        const carouselImages = document.querySelector(".carousel-images");
+        const totalSlides = document.querySelectorAll(".carousel-item").length;
+        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+        carouselImages.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Reset the auto-slide interval when user interacts
+        resetAutoSlide();
+      }
+
+      // Function to reset the auto-slide interval
+      function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(() => {
+          moveCarousel(1);
+        }, 5000); // Change every 5 seconds
+      }
+
+      // Initialize the carousel and set the interval
+      document.addEventListener("DOMContentLoaded", () => {
+        autoSlideInterval = setInterval(() => {
+          moveCarousel(1);
+        }, 5000); // Change every 5 seconds
+      });
+
+      // Adjust all iframe heights dynamically based on their width
+      function adjustIframeHeights() {
+        const iframes = document.querySelectorAll(".video-frame");
+        iframes.forEach((iframe) => {
+          iframe.style.height = (iframe.offsetWidth * 9) / 16 + "px"; // Maintain 16:9 aspect ratio
+        });
+      }
+
+      // Adjust heights on load and window resize
+      window.addEventListener("load", adjustIframeHeights);
+      window.addEventListener("resize", adjustIframeHeights);
+    </script>
+  </body>
+</html>
