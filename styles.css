@@ -5,7 +5,10 @@ body {
   padding: 0;
   line-height: 1.6;
   color: #333;
+  font-size: 16px;
+  /* width:100%; */
 }
+
 header {
   background: #477998; /* Primary theme color */
   color: #eec584; /* Accent color */
@@ -16,6 +19,8 @@ header {
   align-items: center; /* Center-align content horizontally */
   justify-content: center; /* Center-align content vertically */
   height: 200px; /* Optional: Set height for consistent spacing */
+  font-size: 2rem;
+  width:100%;
 }
 
 header h1 {
@@ -24,17 +29,20 @@ header h1 {
 }
 
 header p {
-  font-size: 1.2rem; /* Slightly smaller font for job title */
+  font-size: 1rem; /* Slightly smaller font for job title */
   margin: 0; /* Remove default margin */
+  
 }
 
 /* Navbar styling */
 nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   background: #477998; /* Primary theme color */
-  padding: 0.5rem;
+  /* padding: 0.5rem 1rem; */
   position: relative; /* Needed for dropdown positioning */
+  /* width:100%; */
 }
 
 nav a {
@@ -149,7 +157,7 @@ section {
 
 .research-interests-container ul {
   list-style-type: disc; /* Standard bullet points */
-  padding: 0;
+  padding: 1rem;
   margin: 0;
 }
 
@@ -493,4 +501,104 @@ iframe {
 }
 #contact a:hover {
   text-decoration: underline; /* Underline on hover */
+}
+
+@media (max-width: 768px) {
+  header{
+    width:100%;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  header p {
+    font-size: 0.9rem;
+  }
+
+  nav {
+    flex-direction: column;
+    width:100%;
+  }
+
+  nav a {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  img, iframe {
+    width: 100%;
+    height: auto;
+  }
+
+  section {
+    padding: 1rem;
+  }
+
+  #bio .bio-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #bio img {
+    width: 120px;
+  }
+
+  .research-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .research-item img {
+    max-width: 100%;
+  }
+
+  .research-description h4 {
+    font-size: 1.1rem;
+  }
+
+  .download-button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  footer {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header{
+    width:100%;
+  }
+  header h1 {
+    font-size: 1.2rem;
+  }
+
+  header p {
+    font-size: 0.8rem;
+  }
+  nav{
+    width:100%;
+  }
+  nav a {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  #bio img {
+    width: 100px;
+  }
+
+  .research-item img {
+    max-width: 100%;
+  }
+
+  .download-button {
+    font-size: 0.8rem;
+  }
+
+  footer {
+    font-size: 0.7rem;
+  }
 }
