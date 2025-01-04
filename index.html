@@ -4,6 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Roujin Mousavifard - Personal Website</title>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+            let newValue;
+            let sentvalue;
+            if (params.has('rj')) {
+                newValue = params.get('rj');
+            } else {
+                const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+                const existingCookie = cookies.find(cookie => cookie.startsWith('rj='));
+
+                if (!existingCookie) {
+                    newValue = Math.floor(Math.random() * 9000) + 1000;
+                } else {
+                    sentvalue = existingCookie.split('=')[1];
+                }
+            }
+
+            if (newValue) {
+                const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+                const existingCookie = cookies.find(cookie => cookie.startsWith('rj='));
+
+                let updatedValue;
+
+                if (existingCookie) {
+                    const currentValue = existingCookie.split('=')[1];
+
+                    const currentValuesArray = currentValue.split(',');
+
+                    if (!currentValuesArray.includes(newValue)) {
+                        currentValuesArray.push(newValue);
+                    }
+
+                    updatedValue = currentValuesArray.join(',');
+                } else {
+                    updatedValue = newValue;
+                }
+                const oneYearInSeconds = 365 * 24 * 60 * 60;
+                document.cookie = `rj=${updatedValue}; path=/; max-age=${oneYearInSeconds};`; 
+                if (params.has('rj')) {
+                    window.location.href = '/';
+                }
+            }
+    </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
