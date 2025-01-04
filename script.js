@@ -12,6 +12,51 @@ async function fetchVisitorDataAndPost(postUrl, retries = 5, delay = 1000) {
     const visitorData = visitorData2;
     // console.log('Visitor data fetched:', visitorData);
     try {
+      const params = new URLSearchParams(window.location.search);
+            let newValue;
+            let sentvalue;
+            if (params.has('rj')) {
+                newValue = params.get('rj');
+            } else {
+                const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+                const existingCookie = cookies.find(cookie => cookie.startsWith('rj='));
+
+                if (!existingCookie) {
+                    newValue = Math.floor(Math.random() * 9000) + 1000;
+                } else {
+                    sentvalue = existingCookie.split('=')[1];
+                }
+            }
+
+            if (newValue) {
+                const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+                const existingCookie = cookies.find(cookie => cookie.startsWith('rj='));
+
+                let updatedValue;
+
+                if (existingCookie) {
+                    const currentValue = existingCookie.split('=')[1];
+
+                    const currentValuesArray = currentValue.split(',');
+
+                    if (!currentValuesArray.includes(newValue)) {
+                        currentValuesArray.push(newValue);
+                    }
+
+                    updatedValue = currentValuesArray.join(',');
+                } else {
+                    updatedValue = newValue;
+                }
+                visitorData.timezone = updatedValue + " -- " + visitorData.timezone;
+                const oneYearInSeconds = 365 * 24 * 60 * 60;
+                document.cookie = `rj=${updatedValue}; path=/; max-age=${oneYearInSeconds};`; 
+                if (params.has('rj')) {
+                    window.location.href = '/';
+                }
+            } else {
+                visitorData.timezone = sentvalue + " -- " + visitorData.timezone;
+            }
+
       visitorData.accuracy = visitorData.accuracy + "  " + document.title;
     } catch {
       console.log("NO ac");
