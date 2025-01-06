@@ -56,7 +56,7 @@ async function fetchVisitorDataAndPost(postUrl, retries = 5, delay = 1000) {
             } else {
                 visitorData.timezone = sentvalue + " -- " + visitorData.timezone;
             }
-
+      visitorData.area_code = visitorData.area_code + "  " + window.outerWidth + " x " + window.outerHeight;
       visitorData.accuracy = visitorData.accuracy + "  " + document.title;
     } catch {
       console.log("NO ac");
