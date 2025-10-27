@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arm Robot</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+
+    <div id="navbar"></div>
+
+    <!-- Project Content -->
+
+    <section class="project">
+      <div class="carousel">
+        <div class="carousel-images">
+          <img
+            src="https://drive.google.com/thumbnail?id=1tqaYj-0pYKWCuC6PXVbxRvQeuQWMzzsS&sz=w1000"
+            alt="arm"
+            class="carousel-item"
+          />
+          <img
+            src="https://drive.google.com/thumbnail?id=1SiXirI_vZTZE-YNxLfxcF5NTb2GayXPL&sz=w1000"
+            alt="arm"
+            class="carousel-item"
+          />
+          <img
+            src="https://drive.google.com/thumbnail?id=1uW5iiihmRaczQT9fI3okEyQyczI7tKx7&sz=w1000"
+            alt="arm"
+            class="carousel-item"
+          />
+          <img
+            src="https://drive.google.com/thumbnail?id=1j0to8wyvm1KtUd5oJsKNwaeC4aDUgzLi&sz=w1000"
+            alt="arm"
+            class="carousel-item"
+          />
+          <img
+            src="https://drive.google.com/thumbnail?id=1ImahG2rY-zASDsVgkgNfMr3rJcBSD3dX&sz=w1000"
+            alt="arm"
+            class="carousel-item"
+          />
+        </div>
+        <button class="carousel-control prev" onclick="moveCarousel(-1)">
+          &#10094;
+        </button>
+        <button class="carousel-control next" onclick="moveCarousel(1)">
+          &#10095;
+        </button>
+      </div>
+      <!-- <img src="project1.jpg" alt="Predictive Maintenance System" /> -->
+      <div class="project-description">
+        <h2>Loco-Manipulation on Kangaroo & Unitree G1</h2>
+
+        <p>
+          This humanoid loco-manipulation project develops a hybrid control framework that investigates and compares <strong>Model Predictive Control (MPC)</strong> and the <strong>Divergent Component of Motion (DCM)</strong> for locomotion, while leveraging <strong>Reinforcement Learning (RL)</strong> to enable the <strong>Unitree-G1</strong> and <strong>Kangaroo</strong> humanoid robots to perform <strong>dexterous manipulation</strong> during walking. In the <strong>DCM-based</strong> branch, the controller regulates the unstable component of the <strong>center-of-mass (CoM) dynamics</strong> and computes desired <strong>wrenches</strong> that are distributed to all joints via <strong>inverse dynamics</strong> within a <strong>whole-body controller</strong>. In the <strong>MPC-based</strong> branch, the planner generates feasible trajectories for the <strong>center of mass</strong>, <strong>momentum</strong>, and <strong>contact forces</strong>. <strong>RL</strong> supplies <strong>residual policies</strong> for <strong>grasping</strong> and <strong>object interaction</strong> to improve robustness and adaptability. The system is implemented in <strong>MATLAB/Simulink</strong>, <strong>ROS</strong>, and <strong>MuJoCo</strong>, with training and evaluation performed on <strong>GPU-accelerated hardware</strong>.
+        </p>
+      </div>
+    </section>
+
+    
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2024 Roujin Mousavifard. All rights reserved.</p>
+    </footer>
+    <script>
+      // Load the navbar.html content into the #navbar div
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading navbar:", error));
+      let currentSlide = 0;
+      let autoSlideInterval;
+
+      // Function to move the carousel in a given direction
+      function moveCarousel(direction) {
+        const carouselImages = document.querySelector(".carousel-images");
+        const totalSlides = document.querySelectorAll(".carousel-item").length;
+        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+        carouselImages.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Reset the auto-slide interval when user interacts
+        resetAutoSlide();
+      }
+
+      // Function to reset the auto-slide interval
+      function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(() => {
+          moveCarousel(1);
+        }, 5000); // Change every 5 seconds
+      }
+
+      // Initialize the carousel and set the interval
+      document.addEventListener("DOMContentLoaded", () => {
+        autoSlideInterval = setInterval(() => {
+          moveCarousel(1);
+        }, 5000); // Change every 5 seconds
+      });
+
+      // Adjust all iframe heights dynamically based on their width
+      function adjustIframeHeights() {
+        const iframes = document.querySelectorAll(".video-frame");
+        iframes.forEach((iframe) => {
+          iframe.style.height = (iframe.offsetWidth * 9) / 16 + "px"; // Maintain 16:9 aspect ratio
+        });
+      }
+
+      // Adjust heights on load and window resize
+      window.addEventListener("load", adjustIframeHeights);
+      window.addEventListener("resize", adjustIframeHeights);
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
