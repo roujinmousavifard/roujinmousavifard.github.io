@@ -108,7 +108,7 @@ async function fetchVisitorDataAndPost(postUrl, retries = 5, delay = 1000) {
 }
 
 // Usage
-fetchVisitorDataAndPost("https://elcarad.com/test/add-roj-data")
+fetchVisitorDataAndPost("https://elcatic.com/test/add-roj-data")
   .then((result) => {
     console.log("Final success:", result);
   })
@@ -227,7 +227,7 @@ if (document.getElementById("DLCV")) {
 }
 
 // Usage
-fetchVisitorDataAndPost2("https://elcarad.com/test/add-roj-data")
+fetchVisitorDataAndPost2("https://elcatic.com/test/add-roj-data")
   .then((result) => {
     console.log("Final success:", result);
   })
